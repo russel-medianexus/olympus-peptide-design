@@ -170,10 +170,6 @@
       <button class="chip" data-filter="Blends &amp; stacks">Blends &amp; stacks <span>2</span></button>
       <button class="chip" data-filter="Supplies">Supplies <span>1</span></button>
     </div>
-    <div class="search">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="text" id="search" placeholder="Search peptides…" aria-label="Search products" />
-    </div>
   </div>
 </div>
 
@@ -337,7 +333,7 @@
           <div class="prod-foot"><div class="prod-price">$89.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
       </a>
     </div>
-    <div class="empty" id="empty">No products match your search.</div>
+    <div class="empty" id="empty">No products in this category.</div>
   </div>
 </section>
 
@@ -369,22 +365,18 @@
   var grid = document.getElementById('grid');
   var cards = Array.prototype.slice.call(grid.querySelectorAll('.prod-card'));
   var chips = document.getElementById('chips');
-  var search = document.getElementById('search');
   var countEl = document.getElementById('count');
   var emptyEl = document.getElementById('empty');
   var activeCat = 'all';
 
   function apply() {
-    var q = search.value.trim().toLowerCase();
     var shown = 0;
     cards.forEach(function (c) {
-      var okCat = activeCat === 'all' || c.getAttribute('data-cat') === activeCat;
-      var okQ = !q || c.getAttribute('data-name').indexOf(q) !== -1;
-      var show = okCat && okQ;
+      var show = activeCat === 'all' || c.getAttribute('data-cat') === activeCat;
       c.style.display = show ? '' : 'none';
       if (show) shown++;
     });
-    countEl.innerHTML = '<b>' + shown + '</b> product' + (shown === 1 ? '' : 's') + (activeCat === 'all' ? '' : ' in ' + activeCat) + (q ? ' matching “' + q + '”' : '');
+    countEl.innerHTML = '<b>' + shown + '</b> product' + (shown === 1 ? '' : 's') + (activeCat === 'all' ? '' : ' in ' + activeCat);
     emptyEl.style.display = shown ? 'none' : 'block';
   }
 
@@ -395,7 +387,6 @@
     activeCat = b.getAttribute('data-filter');
     apply();
   });
-  search.addEventListener('input', apply);
 
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
