@@ -30,10 +30,10 @@
   .topbar .ts svg { width: 14px; height: 14px; stroke: var(--blue-soft); fill: none; stroke-width: 1.8; }
   .topbar .sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,.35); }
   .site-header.scrolled .topbar { height: 0; opacity: 0; }
-  nav { height: 80px; display: flex; align-items: center; background: rgba(255,255,255,0.66);
+  nav { height: 80px; display: flex; align-items: center; background: rgba(255,255,255,0.92);
     backdrop-filter: saturate(180%) blur(22px); -webkit-backdrop-filter: saturate(180%) blur(22px);
-    border-bottom: 1px solid transparent; transition: border-color .4s var(--ease), background .4s var(--ease), height .4s var(--ease); }
-  .site-header.scrolled nav { height: 64px; border-bottom-color: var(--line); background: rgba(255,255,255,0.85); }
+    border-bottom: 1px solid var(--line); transition: border-color .4s var(--ease), background .4s var(--ease), height .4s var(--ease); }
+  .site-header.scrolled nav { height: 64px; border-bottom-color: var(--line); background: rgba(255,255,255,0.96); }
   nav .wrap { display: flex; align-items: center; justify-content: space-between; }
   .brand { font-weight: 700; font-size: 23px; letter-spacing: .18em; color: var(--ink); display: flex; align-items: center; gap: 12px; }
   .brand .mark { width: 27px; height: 27px; border-radius: 50%; background: conic-gradient(from 220deg, var(--blue), var(--blue-soft), var(--blue)); box-shadow: inset 0 0 0 4px #fff, 0 3px 12px rgba(29,47,145,.45); }
@@ -42,7 +42,9 @@
   .navlinks a::after { content: ""; position: absolute; left: 0; bottom: -7px; height: 1.5px; width: 0; background: var(--blue); transition: width .3s var(--ease); }
   .navlinks a:hover, .navlinks a.active { opacity: 1; } .navlinks a:hover::after, .navlinks a.active::after { width: 100%; }
   .navicons { display: flex; gap: 22px; align-items: center; }
-  .navicons svg { width: 19px; height: 19px; stroke: var(--ink); opacity: .80; cursor: pointer; transition: opacity .25s; }
+  .navicons a { display: inline-flex; }
+  .navicons svg { width: 19px; height: 19px; stroke: var(--ink); opacity: .80; cursor: pointer; transition: opacity .25s; fill: none; }
+  .navicons a:hover svg { opacity: 1; }
   .nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: #fff !important; font-size: 14px; font-weight: 600; padding: 11px 24px; border-radius: 100px; margin-left: 6px; box-shadow: 0 6px 18px rgba(29,47,145,.28); transition: background .25s, transform .25s var(--ease), box-shadow .25s; }
   .nav-cta:hover { background: var(--blue-2); transform: translateY(-1px); box-shadow: 0 10px 26px rgba(29,47,145,.38); }
   .menu-toggle { display: none; }
@@ -135,14 +137,14 @@
       <a class="brand" href="index.html"><span class="mark"></span>OLYMPUS</a>
       <div class="navlinks">
         <a href="shop.html" class="active">Shop</a>
-        <a href="index.html#categories">Categories</a>
-        <a href="index.html#standard">The Standard</a>
-        <a href="index.html#science">Science</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </div>
       <div class="navicons">
-        <svg class="desk" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <svg class="desk" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3.5-6 7-6s7 2 7 6"/></svg>
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M6 7h13l-1.5 10.5a2 2 0 0 1-2 1.7H9.5a2 2 0 0 1-2-1.7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <a class="desk" href="shop.html" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a>
+        <a class="desk" href="account.html" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3.5-6 7-6s7 2 7 6"/></svg></a>
+        <a href="cart.html" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M6 7h13l-1.5 10.5a2 2 0 0 1-2 1.7H9.5a2 2 0 0 1-2-1.7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></a>
         <a class="nav-cta" href="shop.html">Shop peptides</a>
       </div>
     </div>
@@ -345,11 +347,11 @@
         <p>Research-grade peptides, purified and verified to a higher standard. Olympus Peptide.</p>
       </div>
       <div class="foot-col"><h4>Shop</h4>
-        <a href="shop.html">All peptides</a><a href="shop.html">Weight loss</a><a href="shop.html">Healing &amp; recovery</a><a href="shop.html">Longevity</a><a href="shop.html">Skin &amp; hair</a></div>
+        <a href="shop.html">All peptides</a><a href="shop.html?cat=Weight%20loss">Weight loss</a><a href="shop.html?cat=Healing%20%26%20recovery">Healing &amp; recovery</a><a href="shop.html?cat=Longevity">Longevity</a><a href="categories.html">All categories</a></div>
       <div class="foot-col"><h4>Company</h4>
-        <a href="index.html#standard">The Standard</a><a href="index.html#science">Science</a><a href="#">Certificates</a><a href="#">Contact</a></div>
+        <a href="about.html">About us</a><a href="contact.html">Contact</a><a href="index.html#standard">The Standard</a><a href="index.html#science">Science</a></div>
       <div class="foot-col"><h4>Support</h4>
-        <a href="#">Account</a><a href="#">Bulk order</a><a href="#">Shipping</a><a href="#">FAQ</a></div>
+        <a href="account.html">My account</a><a href="cart.html">Cart</a><a href="#">Bulk order</a><a href="#">Shipping &amp; FAQ</a></div>
     </div>
     <p class="disclaimer">All products are sold strictly for laboratory and research purposes only and are not intended for human or veterinary use, diagnosis, treatment, or consumption. Statements have not been evaluated by any regulatory authority.</p>
     <div class="foot-bottom"><p>&copy; 2026 Olympus Peptide. All rights reserved.</p><p>Privacy · Terms · Shipping</p></div>
