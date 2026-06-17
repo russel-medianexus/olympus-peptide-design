@@ -112,17 +112,19 @@
     overflow: hidden;
   }
   .hero-photo {
-    position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .42;
-    background: url("https://images.unsplash.com/photo-1628595351029-c2bf17511435?q=80&w=2000&auto=format&fit=crop") center/cover no-repeat;
-    transform: scale(1.05); animation: kenburns 24s ease-in-out infinite alternate;
+    position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .72;
+    background: url("https://images.unsplash.com/photo-1628595351029-c2bf17511435?q=85&w=2200&auto=format&fit=crop") center/cover no-repeat;
+    filter: contrast(1.08) saturate(1.05);
+    transform: scale(1.04); animation: kenburns 24s ease-in-out infinite alternate;
   }
+  /* Lighter wash: a focused halo keeps the headline legible while the DNA stays crisp at the edges */
   .hero-overlay {
     position: absolute; inset: 0; z-index: 1; pointer-events: none;
     background:
-      radial-gradient(60% 56% at 50% 44%, rgba(255,255,255,.95), rgba(255,255,255,.52) 56%, rgba(255,255,255,.14) 100%),
-      linear-gradient(180deg, rgba(238,242,252,.55) 0%, rgba(255,255,255,.5) 55%, rgba(255,255,255,.78) 100%);
+      radial-gradient(54% 50% at 50% 42%, rgba(255,255,255,.80), rgba(243,245,251,.32) 55%, rgba(243,245,251,0) 100%),
+      linear-gradient(180deg, rgba(29,47,145,.06) 0%, rgba(255,255,255,.18) 48%, rgba(255,255,255,.62) 100%);
   }
-  .hero-pattern { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .10; background-image: var(--net-blue); }
+  .hero-pattern { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .08; background-image: var(--net-blue); }
   /* Light-hero text treatment */
   .hero .hero-inner .eyebrow { color: var(--blue); }
   .hero .hero-inner h1 { color: var(--ink); }
@@ -300,27 +302,36 @@
   .tile.light .orb, .tile.tint .orb { width: 180px; height: 180px; border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #ffffff, #cdd6f3 55%, #9aa8e0); box-shadow: 0 24px 50px rgba(29,47,145,.18); }
 
-  /* ---------- CATEGORIES ---------- */
-  .cats { padding: 120px 0; }
+  /* ---------- CATEGORIES (lifestyle image cards) ---------- */
+  .cats { padding: 120px 0; background: linear-gradient(180deg, var(--mist) 0%, var(--mist-2) 100%); }
   .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 54px; }
   .cat {
-    border: 1px solid var(--line); border-radius: 20px; padding: 34px 26px; min-height: 200px;
-    display: flex; flex-direction: column; justify-content: space-between;
-    background: #fff; transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s;
+    position: relative; border-radius: 20px; overflow: hidden; min-height: 280px;
+    display: flex; flex-direction: column; justify-content: flex-end; color: #fff; isolation: isolate;
+    transition: transform .4s var(--ease), box-shadow .4s var(--ease);
   }
-  .cat:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(10,15,44,.10); border-color: transparent; }
-  .cat .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--mist);
-    display: flex; align-items: center; justify-content: center; }
-  .cat .ico svg { width: 22px; height: 22px; stroke: var(--blue); fill: none; stroke-width: 1.6; }
-  .cat .cname { font-family: var(--display); font-size: 22px; font-weight: 400; margin-top: 26px; }
-  .cat .cmeta { font-size: 13.5px; color: var(--muted); margin-top: 6px; display: flex; align-items: center; gap: 6px; }
+  .cat .catbg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+    transition: transform .6s var(--ease); }
+  .cat::before { content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(13,20,60,.12) 0%, rgba(13,20,60,.30) 42%, rgba(13,20,60,.86) 100%);
+    transition: background .4s var(--ease); }
+  .cat:hover { transform: translateY(-6px); box-shadow: 0 26px 52px rgba(10,15,44,.24); }
+  .cat:hover .catbg { transform: scale(1.07); }
+  .cat:hover::before { background: linear-gradient(180deg, rgba(29,47,145,.18) 0%, rgba(29,47,145,.38) 42%, rgba(13,20,60,.88) 100%); }
+  .cat .cbody { position: relative; z-index: 2; padding: 26px; }
+  .cat .cname { font-family: var(--display); font-size: 23px; font-weight: 400; line-height: 1.1; }
+  .cat .cmeta { font-size: 13.5px; color: rgba(255,255,255,.84); margin-top: 7px; display: flex; align-items: center; gap: 6px; }
+  .cat .cmeta .arr { transition: transform .3s var(--ease); }
   .cat:hover .cmeta .arr { transform: translateX(4px); }
-  .cat .cmeta .arr { transition: transform .3s var(--ease); color: var(--blue); }
+  /* "View all" tile keeps the brand-gradient treatment */
+  .cat.cat-all { background: linear-gradient(150deg, var(--blue), var(--blue-2)); }
+  .cat.cat-all::before { display: none; }
 
   /* ---------- STANDARD / STATS ---------- */
-  .standard { background: var(--ink); color: #fff; padding: 130px 0; position: relative; overflow: hidden; }
+  .standard { background: linear-gradient(160deg, #1d2f91 0%, #16236e 55%, #0e1a52 100%); color: #fff; padding: 130px 0; position: relative; overflow: hidden; }
   .standard::before { content:""; position:absolute; width: 700px; height: 700px; border-radius: 50%;
-    right: -200px; top: -200px; background: radial-gradient(circle, rgba(42,61,165,.5), transparent 65%); }
+    right: -200px; top: -200px; background: radial-gradient(circle, rgba(111,127,214,.45), transparent 65%); }
+  .standard::after { content:""; position:absolute; inset:0; background-image: var(--net); opacity:.05; pointer-events:none; }
   .standard .sec-head .kicker { color: var(--blue-soft); }
   .standard h2.title { color: #fff; }
   .standard h2.title em { color: var(--blue-soft); }
@@ -332,7 +343,7 @@
   .stat .lab { font-size: 13.5px; color: rgba(255,255,255,.6); margin-top: 14px; letter-spacing: .02em; }
 
   /* ---------- SCIENCE SPLIT ---------- */
-  .science { padding: 130px 0; }
+  .science { padding: 130px 0; background: linear-gradient(180deg, var(--mist-2) 0%, #fff 100%); }
   .split { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
   .split .panel { border-radius: 26px; min-height: 460px; background: linear-gradient(150deg, #eef1fa, #dbe2f6);
     position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
@@ -376,20 +387,21 @@
   .disclaimer { font-size: 11.5px; color: var(--muted); margin-top: 22px; line-height: 1.6; max-width: 760px; }
 
   /* ---------- PRODUCT CARDS ---------- */
-  .bestsellers { padding: 130px 0 0; }
+  .bestsellers { padding: 130px 0 120px; background: linear-gradient(180deg, #fff 0%, var(--mist) 100%); }
   .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 54px; }
   .prod-card { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
     display: flex; flex-direction: column; transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s; }
-  .prod-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 3;
-    background: linear-gradient(90deg, var(--blue), var(--blue-soft));
-    transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease); }
-  .prod-card:hover::before { transform: scaleX(1); }
   .prod-card:hover { transform: translateY(-6px); box-shadow: 0 22px 46px rgba(10,15,44,.12); border-color: transparent; }
-  .prod-media { position: relative; background: #ffffff; aspect-ratio: 4 / 3;
+  .prod-media { position: relative; background: #ffffff; aspect-ratio: 4 / 3; overflow: hidden;
     display: flex; align-items: center; justify-content: center; padding: 24px; }
   .prod-media img { max-height: 100%; max-width: 76%; object-fit: contain;
-    transition: transform .55s var(--ease); }
-  .prod-card:hover .prod-media img { transform: scale(1.06); }
+    transition: transform .6s var(--ease); }
+  /* Hover: zoom the bottle + a soft blue tint washes the image area */
+  .prod-media::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(160deg, rgba(29,47,145,.16), rgba(111,127,214,.10));
+    opacity: 0; transition: opacity .45s var(--ease); }
+  .prod-card:hover .prod-media img { transform: scale(1.12); }
+  .prod-card:hover .prod-media::after { opacity: 1; }
   .prod-badge { position: absolute; top: 13px; left: 13px; font-size: 10.5px; font-weight: 600;
     letter-spacing: .14em; text-transform: uppercase; color: #fff;
     background: var(--blue); padding: 6px 11px; border-radius: 100px; }
@@ -548,8 +560,7 @@
     <div class="prod-grid">
 
       <a class="prod-card reveal" href="https://olympuspeptide.ca/product/retatrutide/">
-        <div class="prod-media"><span class="prod-badge">Bestseller</span>
-          <img src="https://olympuspeptide.ca/wp-content/uploads/2026/02/bottle_reta_generic.jpg" alt="Retatrutide" loading="lazy"/></div>
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/02/bottle_reta_generic.jpg" alt="Retatrutide" loading="lazy"/></div>
         <div class="prod-info"><div class="prod-cat">Weight loss</div><div class="prod-name">Retatrutide</div>
           <div class="prod-foot"><div class="prod-price">$89 <span>/ vial</span></div>
             <div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
@@ -572,8 +583,7 @@
       </a>
 
       <a class="prod-card reveal" href="https://olympuspeptide.ca/product/bpc-157/">
-        <div class="prod-media"><span class="prod-badge">Bestseller</span>
-          <img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_bpc157.jpg" alt="BPC-157" loading="lazy"/></div>
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_bpc157.jpg" alt="BPC-157" loading="lazy"/></div>
         <div class="prod-info"><div class="prod-cat">Healing &amp; recovery</div><div class="prod-name">BPC-157</div>
           <div class="prod-foot"><div class="prod-price">$59 <span>/ vial</span></div>
             <div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
@@ -627,38 +637,36 @@
       <p class="lead">Seven focused collections. One uncompromising standard of purity.</p>
     </div>
     <div class="cat-grid">
-      <!-- icons inline -->
-      <a class="cat reveal" href="#">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 3h6v4l4 12a2 2 0 0 1-2 2.6H7A2 2 0 0 1 5 19L9 7z"/></svg></div>
-        <div><div class="cname">Peptides</div><div class="cmeta">29 products <span class="arr">→</span></div></div>
+      <a class="cat reveal" href="shop.html?cat=Weight%20loss">
+        <img class="catbg" src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=900&auto=format&fit=crop" alt="" loading="lazy"/>
+        <div class="cbody"><div class="cname">Weight loss</div><div class="cmeta">GLP-1 class <span class="arr">→</span></div></div>
       </a>
-      <a class="cat reveal" href="#">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.3-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.7-7 10-7 10z"/></svg></div>
-        <div><div class="cname">Healing & recovery</div><div class="cmeta">Tissue & repair <span class="arr">→</span></div></div>
+      <a class="cat reveal" href="shop.html?cat=Healing%20%26%20recovery">
+        <img class="catbg" src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=900&auto=format&fit=crop" alt="" loading="lazy"/>
+        <div class="cbody"><div class="cname">Healing &amp; recovery</div><div class="cmeta">Tissue &amp; repair <span class="arr">→</span></div></div>
       </a>
-      <a class="cat reveal" href="#">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 4v16M6 8l6-4 6 4M5 14c3 2 11 2 14 0"/></svg></div>
-        <div><div class="cname">Weight loss</div><div class="cmeta">GLP-1 class <span class="arr">→</span></div></div>
+      <a class="cat reveal" href="shop.html?cat=Muscle%20growth">
+        <img class="catbg" src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=900&auto=format&fit=crop" alt="" loading="lazy"/>
+        <div class="cbody"><div class="cname">Muscle growth</div><div class="cmeta">Performance <span class="arr">→</span></div></div>
       </a>
-      <a class="cat reveal" href="#">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 12h3l2-6 4 14 2-8h5"/></svg></div>
-        <div><div class="cname">Muscle growth</div><div class="cmeta">Performance <span class="arr">→</span></div></div>
+      <a class="cat reveal" href="shop.html?cat=Longevity">
+        <img class="catbg" src="https://images.unsplash.com/photo-1559963110-71b394e7494d?q=80&w=900&auto=format&fit=crop" alt="" loading="lazy"/>
+        <div class="cbody"><div class="cname">Longevity</div><div class="cmeta">Cellular health <span class="arr">→</span></div></div>
       </a>
-      <a class="cat reveal" href="#">
-        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
-        <div><div class="cname">Longevity</div><div class="cmeta">Cellular health <span class="arr">→</span></div></div>
+      <a class="cat reveal" href="shop.html?cat=Skin%20%26%20hair">
+        <img class="catbg" src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=900&auto=format&fit=crop" alt="" loading="lazy"/>
+        <div class="cbody"><div class="cname">Skin &amp; hair</div><div class="cmeta">Aesthetics <span class="arr">→</span></div></div>
       </a>
-      <a class="cat reveal" href="#">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10z"/></svg></div>
-        <div><div class="cname">Skin & hair</div><div class="cmeta">Aesthetics <span class="arr">→</span></div></div>
+      <a class="cat reveal" href="shop.html?cat=Sexual%20health">
+        <img class="catbg" src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=900&auto=format&fit=crop" alt="" loading="lazy"/>
+        <div class="cbody"><div class="cname">Sexual health</div><div class="cmeta">Vitality <span class="arr">→</span></div></div>
       </a>
-      <a class="cat reveal" href="#">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.3-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.7-7 10-7 10z"/></svg></div>
-        <div><div class="cname">Sexual health</div><div class="cmeta">Vitality <span class="arr">→</span></div></div>
+      <a class="cat reveal" href="shop.html">
+        <img class="catbg" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=900&auto=format&fit=crop" alt="" loading="lazy"/>
+        <div class="cbody"><div class="cname">All peptides</div><div class="cmeta">The full catalog <span class="arr">→</span></div></div>
       </a>
-      <a class="cat reveal" href="#" style="background:linear-gradient(150deg,#1d2f91,#2a3da5);border-color:transparent;color:#fff">
-        <div class="ico" style="background:rgba(255,255,255,.16)"><svg viewBox="0 0 24 24" style="stroke:#fff"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        <div><div class="cname" style="color:#fff">View all</div><div class="cmeta" style="color:rgba(255,255,255,.8)">The full catalog <span class="arr" style="color:#fff">→</span></div></div>
+      <a class="cat cat-all reveal" href="categories.html">
+        <div class="cbody"><div class="cname">View all categories</div><div class="cmeta" style="color:rgba(255,255,255,.85)">Browse collections <span class="arr">→</span></div></div>
       </a>
     </div>
   </div>

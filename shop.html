@@ -74,12 +74,12 @@
   .count b { color: var(--ink); font-weight: 600; }
   .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   .prod-card { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s; }
-  .prod-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 3; background: linear-gradient(90deg, var(--blue), var(--blue-soft)); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease); }
-  .prod-card:hover::before { transform: scaleX(1); }
   .prod-card:hover { transform: translateY(-6px); box-shadow: 0 22px 46px rgba(10,15,44,.12); border-color: transparent; }
-  .prod-media { position: relative; background: #fff; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; padding: 24px; }
-  .prod-media img { max-height: 100%; max-width: 76%; object-fit: contain; transition: transform .55s var(--ease); }
-  .prod-card:hover .prod-media img { transform: scale(1.06); }
+  .prod-media { position: relative; background: #fff; aspect-ratio: 4 / 3; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .prod-media img { max-height: 100%; max-width: 76%; object-fit: contain; transition: transform .6s var(--ease); }
+  .prod-media::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(160deg, rgba(29,47,145,.16), rgba(111,127,214,.10)); opacity: 0; transition: opacity .45s var(--ease); }
+  .prod-card:hover .prod-media img { transform: scale(1.12); }
+  .prod-card:hover .prod-media::after { opacity: 1; }
   .prod-badge { position: absolute; top: 13px; left: 13px; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: var(--blue); padding: 6px 11px; border-radius: 100px; }
   .prod-info { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; background: var(--mist-2); border-top: 1px solid var(--line); }
   .prod-cat { font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
@@ -387,6 +387,14 @@
     activeCat = b.getAttribute('data-filter');
     apply();
   });
+
+  // Pre-select a category from the URL (?cat=...) so homepage cards open an archive
+  (function () {
+    var initCat = new URLSearchParams(location.search).get('cat');
+    if (!initCat) return;
+    var match = Array.prototype.find.call(chips.querySelectorAll('.chip'), function (c) { return c.getAttribute('data-filter') === initCat; });
+    if (match) { chips.querySelectorAll('.chip').forEach(function (x) { x.classList.remove('is-active'); }); match.classList.add('is-active'); activeCat = initCat; }
+  })();
 
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
