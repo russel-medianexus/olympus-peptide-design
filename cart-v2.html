@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>My account — Olympus Peptide</title>
+<title>Cart — Olympus Peptide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -211,6 +211,52 @@
   @media (max-width: 560px) { .cat-grid, .grid-3, .field.row2 { grid-template-columns: 1fr; } .foot-grid { grid-template-columns: 1fr; }
     .cart-row { grid-template-columns: 64px 1fr; row-gap: 12px; } .cart-row .thumb { width: 64px; height: 64px; } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
+
+  /* ===================== DARK THEME OVERRIDES ===================== */
+  :root {
+    --ink: #f4f6ff; --blue: #5468d8; --blue-2: #6f82e6; --blue-soft: #97a6f0;
+    --paper: #070b1e; --mist: #0c1230; --mist-2: #111838;
+    --bg-2: #0c1230; --bg-3: #121a3f;
+    --line: rgba(150, 165, 230, 0.14); --muted: #9aa3c4;
+  }
+  body { background: var(--paper); color: var(--ink); }
+  .topbar { background: #0c1230; }
+  nav { background: rgba(8,12,30,0.82); }
+  .site-header.scrolled nav { background: rgba(8,12,30,0.94); }
+  .navicons svg { stroke: var(--ink); }
+  .brand .logo-img { filter: brightness(0) invert(1); }
+  .sec.tint { background: linear-gradient(180deg, var(--bg-2), var(--paper)); }
+  .sec.mist { background: var(--mist); }
+  .vcard { background: var(--bg-3); border-color: var(--line); }
+  .vcard:hover { box-shadow: 0 22px 44px rgba(0,0,0,.45); }
+  .vcard .vico { background: var(--bg-2); }
+  .panel-card { background: var(--bg-3); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+  .field input, .field select, .field textarea { background: var(--bg-2); color: var(--ink); border-color: var(--line); }
+  .field input:focus, .field select:focus, .field textarea:focus { background: var(--bg-2); box-shadow: 0 0 0 4px rgba(84,104,216,.20); }
+  .form-ok { background: rgba(46,160,90,.16); color: #5fe0a0; }
+  .info .iico { background: var(--bg-2); }
+  .btn-outline { background: var(--bg-3); color: var(--blue-soft); border-color: var(--line); }
+  .btn-outline:hover { border-color: var(--blue); }
+  .cart-items { background: var(--bg-3); border-color: var(--line); }
+  .stepper { border-color: var(--line); }
+  .stepper button { background: var(--bg-2); color: var(--blue-soft); }
+  .stepper button:hover { background: var(--bg-3); }
+  .stepper input { background: var(--bg-2); color: var(--ink); }
+  .summary { background: linear-gradient(180deg, var(--bg-3), var(--bg-2)); border-color: var(--line); }
+  .cart-row .thumb { background: #fff; }   /* product photos read best on white */
+  /* shop-page selectors (no-ops on the gen_pages pages, used by gen_shop) */
+  .toolbar { background: rgba(8,12,30,0.86); border-bottom-color: var(--line); }
+  .chip { background: var(--bg-2); color: var(--ink); border-color: var(--line); }
+  .chip span { background: var(--bg-3); color: var(--muted); }
+  .search input { background: var(--bg-2); color: var(--ink); border-color: var(--line); }
+  .prod-card { background: var(--bg-3); border-color: var(--line); }
+  .prod-card:hover { box-shadow: 0 22px 46px rgba(0,0,0,.5); }
+  .prod-media { background: #fff; }        /* keep white behind bottle shots */
+  .prod-info { background: var(--bg-3); border-top-color: var(--line); }
+  /* footer: var(--ink) would now be near-white, so force a dark slab */
+  footer { background: #060a1c; }
+  .foot-brand .brand { color: #fff; }
+  .foot-brand .logo-img { filter: brightness(0) invert(1); }
 </style>
 </head>
 <body>
@@ -223,57 +269,60 @@
     <span class="ts opt"><svg viewBox="0 0 24 24"><path d="M9 3h6v3l-2 2v4l3 7H8l3-7V8L9 6z"/></svg>COA with every batch</span>
   </div></div>
   <nav id="nav"><div class="wrap">
-    <a class="brand" href="index.html"><img class="logo-img" src="assets/olympus-logo.png" alt="Olympus Peptide"></a>
+    <a class="brand" href="index-v2.html"><img class="logo-img" src="assets/olympus-logo.png" alt="Olympus Peptide"></a>
     <div class="navlinks">
-      <a href="shop.html">Shop</a>
-      <a href="categories.html">Categories</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="shop-v2.html">Shop</a>
+      <a href="categories-v2.html">Categories</a>
+      <a href="about-v2.html">About</a>
+      <a href="contact-v2.html">Contact</a>
     </div>
     <div class="navicons">
-      <a class="desk" href="shop.html" aria-label="Search"><svg viewBox="0 0 24 24" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a>
-      <a class="desk" href="account.html" aria-label="Account"><svg viewBox="0 0 24 24" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3.5-6 7-6s7 2 7 6"/></svg></a>
-      <a href="cart.html" aria-label="Cart"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M6 7h13l-1.5 10.5a2 2 0 0 1-2 1.7H9.5a2 2 0 0 1-2-1.7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></a>
-      <a class="nav-cta" href="shop.html">Shop peptides</a>
+      <a class="desk" href="shop-v2.html" aria-label="Search"><svg viewBox="0 0 24 24" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a>
+      <a class="desk" href="account-v2.html" aria-label="Account"><svg viewBox="0 0 24 24" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3.5-6 7-6s7 2 7 6"/></svg></a>
+      <a href="cart-v2.html" aria-label="Cart"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M6 7h13l-1.5 10.5a2 2 0 0 1-2 1.7H9.5a2 2 0 0 1-2-1.7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></a>
+      <a class="nav-cta" href="shop-v2.html">Shop peptides</a>
     </div>
   </div></nav>
 </header>
 <section class="page-hero">
   <div class="wrap">
-    <div class="eyebrow">My account</div>
-    <h1>Welcome <em>back.</em></h1>
-    <p>Sign in to track orders, download certificates of analysis, and reorder in one click.</p>
-    <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; My account</div>
+    <div class="eyebrow">Your cart</div>
+    <h1>Review your <em>order.</em></h1>
+    <div class="crumbs"><a href="index-v2.html">Home</a> &nbsp;/&nbsp; Cart</div>
   </div>
 </section>
 <section class="sec">
   <div class="wrap">
-    <div class="auth-grid">
-      <div class="panel-card auth-card reveal">
-        <h3>Sign in</h3><div class="sub">Access your orders and certificates.</div>
-        <form onsubmit="return false;">
-          <div class="field"><label>Email</label><input type="email" placeholder="you@lab.com" /></div>
-          <div class="field"><label>Password</label><input type="password" placeholder="••••••••" /></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-            <label style="display:flex;gap:8px;align-items:center;font-weight:500;color:var(--muted);font-size:13.5px;"><input type="checkbox" style="width:auto;"/> Remember me</label>
-            <a class="forgot" href="#">Forgot password?</a>
-          </div>
-          <button class="btn btn-primary btn-block" type="submit">Sign in</button>
-        </form>
-        <p class="form-note">New here? <a class="forgot" href="#register">Create an account →</a></p>
+    <div class="cart-grid">
+      <div class="cart-items reveal" id="items">
+      <div class="cart-row" data-unit="79" data-qty="2">
+        <div class="thumb"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_tirsepatide.jpg" alt="Tirzepatide"/></div>
+        <div><div class="pcat">Weight loss</div><div class="pname">Tirzepatide</div><div class="punit">10 mg · $79 / vial</div></div>
+        <div><div class="stepper"><button class="dec" aria-label="decrease">&minus;</button><input type="text" value="2" readonly /><button class="inc" aria-label="increase">+</button></div></div>
+        <div><div class="line-total">$158</div><div class="rm">Remove</div></div>
       </div>
-      <div class="panel-card auth-card auth-side reveal" id="register">
-        <h3>Create an account</h3><div class="sub">Join the Olympus standard.</div>
-        <ul class="perks">
-          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Certificates of analysis for every order</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> One-click reordering &amp; order history</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Early access to new compounds &amp; batches</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Bulk &amp; wholesale pricing on request</li>
-        </ul>
-        <form onsubmit="return false;" style="margin-top:24px;">
-          <div class="field"><label style="color:#fff;">Email</label><input type="email" placeholder="you@lab.com" /></div>
-          <button class="btn btn-outline btn-block" type="submit">Create account</button>
-        </form>
+      <div class="cart-row" data-unit="59" data-qty="1">
+        <div class="thumb"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_bpc157.jpg" alt="BPC-157"/></div>
+        <div><div class="pcat">Healing &amp; recovery</div><div class="pname">BPC-157</div><div class="punit">5 mg · $59 / vial</div></div>
+        <div><div class="stepper"><button class="dec" aria-label="decrease">&minus;</button><input type="text" value="1" readonly /><button class="inc" aria-label="increase">+</button></div></div>
+        <div><div class="line-total">$59</div><div class="rm">Remove</div></div>
+      </div>
+      <div class="cart-row" data-unit="89" data-qty="1">
+        <div class="thumb"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_motsc.jpg" alt="MOTS-C"/></div>
+        <div><div class="pcat">Longevity</div><div class="pname">MOTS-C</div><div class="punit">10 mg · $89 / vial</div></div>
+        <div><div class="stepper"><button class="dec" aria-label="decrease">&minus;</button><input type="text" value="1" readonly /><button class="inc" aria-label="increase">+</button></div></div>
+        <div><div class="line-total">$89</div><div class="rm">Remove</div></div>
+      </div>
+      </div>
+      <div class="summary reveal">
+        <h3>Order summary</h3>
+        <div class="srow"><span>Subtotal</span><span id="sub">$0</span></div>
+        <div class="srow"><span>Shipping (cold-chain)</span><span id="ship">$15</span></div>
+        <div class="srow"><span>Est. tax</span><span id="tax">$0</span></div>
+        <div class="srow total"><span>Total</span><span id="tot">$0</span></div>
+        <a class="btn btn-primary btn-block" href="#">Proceed to checkout</a>
+        <a class="btn btn-ghost btn-block" href="shop-v2.html" style="margin-top:6px;">Continue shopping <span class="arr">&rarr;</span></a>
+        <div class="trust"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg> Free cold-chain shipping over $150</div>
       </div>
     </div>
   </div>
@@ -282,15 +331,15 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="brand" href="index.html"><img class="logo-img" src="assets/olympus-logo.png" alt="Olympus Peptide"></a>
+        <a class="brand" href="index-v2.html"><img class="logo-img" src="assets/olympus-logo.png" alt="Olympus Peptide"></a>
         <p>Research-grade peptides, purified and verified to a higher standard. Olympus Peptide.</p>
       </div>
       <div class="foot-col"><h4>Shop</h4>
-        <a href="shop.html">All peptides</a><a href="shop.html?cat=Weight%20loss">Weight loss</a><a href="shop.html?cat=Healing%20%26%20recovery">Healing &amp; recovery</a><a href="shop.html?cat=Longevity">Longevity</a><a href="categories.html">All categories</a></div>
+        <a href="shop-v2.html">All peptides</a><a href="shop-v2.html?cat=Weight%20loss">Weight loss</a><a href="shop-v2.html?cat=Healing%20%26%20recovery">Healing &amp; recovery</a><a href="shop-v2.html?cat=Longevity">Longevity</a><a href="categories-v2.html">All categories</a></div>
       <div class="foot-col"><h4>Company</h4>
-        <a href="about.html">About us</a><a href="contact.html">Contact</a><a href="index.html#standard">The Standard</a><a href="index.html#science">Science</a></div>
+        <a href="about-v2.html">About us</a><a href="contact-v2.html">Contact</a><a href="index-v2.html#standard">The Standard</a><a href="index-v2.html#science">Science</a></div>
       <div class="foot-col"><h4>Account</h4>
-        <a href="account.html">My account</a><a href="cart.html">Cart</a><a href="#">Bulk order</a><a href="#">Shipping &amp; FAQ</a></div>
+        <a href="account-v2.html">My account</a><a href="cart-v2.html">Cart</a><a href="#">Bulk order</a><a href="#">Shipping &amp; FAQ</a></div>
     </div>
     <p class="disclaimer">All products are sold strictly for laboratory and research purposes only and are not intended for human or veterinary use, diagnosis, treatment, or consumption. Statements have not been evaluated by any regulatory authority.</p>
     <div class="foot-bottom"><p>&copy; 2026 Olympus Peptide. All rights reserved.</p><p>Privacy · Terms · Shipping</p></div>
@@ -302,6 +351,32 @@
   var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(function (el, i) { el.style.transitionDelay = (i % 3 * 0.05) + 's'; io.observe(el); });
 
+  (function(){
+    var SHIP=15, TAXR=0.0;
+    function money(n){ return '$'+n.toFixed(0); }
+    function recalc(){
+      var sub=0;
+      document.querySelectorAll('.cart-row').forEach(function(r){
+        var unit=+r.getAttribute('data-unit'), qty=+r.getAttribute('data-qty');
+        r.querySelector('.line-total').textContent=money(unit*qty);
+        r.querySelector('input').value=qty; sub+=unit*qty;
+      });
+      var ship = sub>=150?0:SHIP;
+      document.getElementById('sub').textContent=money(sub);
+      document.getElementById('ship').textContent= ship?money(ship):'Free';
+      document.getElementById('tax').textContent=money(sub*TAXR);
+      document.getElementById('tot').textContent=money(sub+ship+sub*TAXR);
+    }
+    document.getElementById('items').addEventListener('click', function(e){
+      var r=e.target.closest('.cart-row'); if(!r) return;
+      if(e.target.classList.contains('inc')) r.setAttribute('data-qty', +r.getAttribute('data-qty')+1);
+      else if(e.target.classList.contains('dec')) r.setAttribute('data-qty', Math.max(0,+r.getAttribute('data-qty')-1));
+      else if(e.target.classList.contains('rm')) { r.remove(); recalc(); return; }
+      else return;
+      recalc();
+    });
+    recalc();
+  })();
 </script>
 </body>
 </html>

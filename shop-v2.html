@@ -119,6 +119,34 @@
   }
   @media (max-width: 480px) { .prod-grid { grid-template-columns: 1fr; } .foot-grid { grid-template-columns: 1fr; } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
+
+  /* ===================== DARK THEME OVERRIDES ===================== */
+  :root {
+    --ink: #f4f6ff; --blue: #5468d8; --blue-2: #6f82e6; --blue-soft: #97a6f0;
+    --paper: #070b1e; --mist: #0c1230; --mist-2: #111838;
+    --bg-2: #0c1230; --bg-3: #121a3f;
+    --line: rgba(150, 165, 230, 0.14); --muted: #9aa3c4;
+  }
+  body { background: var(--paper); color: var(--ink); }
+  .topbar { background: #0c1230; }
+  nav { background: rgba(8,12,30,0.82); }
+  .site-header.scrolled nav { background: rgba(8,12,30,0.94); }
+  .navicons svg { stroke: var(--ink); }
+  .brand .logo-img { filter: brightness(0) invert(1); }
+  .shop-head { background: var(--mist); }
+  .shop-head .eyebrow { border-color: rgba(151,166,240,.28); background: rgba(84,104,216,.12); }
+  .toolbar { background: rgba(8,12,30,0.86); border-bottom-color: var(--line); }
+  .chip { background: var(--bg-2); color: var(--ink); border-color: var(--line); }
+  .chip span { background: var(--bg-3); color: var(--muted); }
+  .search input { background: var(--bg-2); color: var(--ink); border-color: var(--line); }
+  .prod-card { background: var(--bg-3); border-color: var(--line); }
+  .prod-card:hover { box-shadow: 0 22px 46px rgba(0,0,0,.5); }
+  .prod-media { background: #fff; }        /* keep white behind bottle shots */
+  .prod-info { background: var(--bg-3); border-top-color: var(--line); }
+  /* footer: literal #fff slab -> dark; text tokens already adapt */
+  footer { background: #060a1c; border-top-color: var(--line); }
+  .foot-brand .brand { color: #fff; }
+  .foot-brand .logo-img { filter: brightness(0) invert(1); }
 </style>
 </head>
 <body>
@@ -135,18 +163,18 @@
   </div>
   <nav id="nav">
     <div class="wrap">
-      <a class="brand" href="index.html"><img class="logo-img" src="assets/olympus-logo.png" alt="Olympus Peptide"></a>
+      <a class="brand" href="index-v2.html"><img class="logo-img" src="assets/olympus-logo.png" alt="Olympus Peptide"></a>
       <div class="navlinks">
-        <a href="shop.html" class="active">Shop</a>
-        <a href="categories.html">Categories</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="shop-v2.html" class="active">Shop</a>
+        <a href="categories-v2.html">Categories</a>
+        <a href="about-v2.html">About</a>
+        <a href="contact-v2.html">Contact</a>
       </div>
       <div class="navicons">
-        <a class="desk" href="shop.html" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a>
-        <a class="desk" href="account.html" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3.5-6 7-6s7 2 7 6"/></svg></a>
-        <a href="cart.html" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M6 7h13l-1.5 10.5a2 2 0 0 1-2 1.7H9.5a2 2 0 0 1-2-1.7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></a>
-        <a class="nav-cta" href="shop.html">Shop peptides</a>
+        <a class="desk" href="shop-v2.html" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a>
+        <a class="desk" href="account-v2.html" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3.5-6 7-6s7 2 7 6"/></svg></a>
+        <a href="cart-v2.html" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M6 7h13l-1.5 10.5a2 2 0 0 1-2 1.7H9.5a2 2 0 0 1-2-1.7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></a>
+        <a class="nav-cta" href="shop-v2.html">Shop peptides</a>
       </div>
     </div>
   </nav>
@@ -344,15 +372,15 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="brand" href="index.html"><img class="logo-img" src="assets/olympus-logo.png" alt="Olympus Peptide"></a>
+        <a class="brand" href="index-v2.html"><img class="logo-img" src="assets/olympus-logo.png" alt="Olympus Peptide"></a>
         <p>Research-grade peptides, purified and verified to a higher standard. Olympus Peptide.</p>
       </div>
       <div class="foot-col"><h4>Shop</h4>
-        <a href="shop.html">All peptides</a><a href="shop.html?cat=Weight%20loss">Weight loss</a><a href="shop.html?cat=Healing%20%26%20recovery">Healing &amp; recovery</a><a href="shop.html?cat=Longevity">Longevity</a><a href="categories.html">All categories</a></div>
+        <a href="shop-v2.html">All peptides</a><a href="shop-v2.html?cat=Weight%20loss">Weight loss</a><a href="shop-v2.html?cat=Healing%20%26%20recovery">Healing &amp; recovery</a><a href="shop-v2.html?cat=Longevity">Longevity</a><a href="categories-v2.html">All categories</a></div>
       <div class="foot-col"><h4>Company</h4>
-        <a href="about.html">About us</a><a href="contact.html">Contact</a><a href="index.html#standard">The Standard</a><a href="index.html#science">Science</a></div>
+        <a href="about-v2.html">About us</a><a href="contact-v2.html">Contact</a><a href="index-v2.html#standard">The Standard</a><a href="index-v2.html#science">Science</a></div>
       <div class="foot-col"><h4>Support</h4>
-        <a href="account.html">My account</a><a href="cart.html">Cart</a><a href="#">Bulk order</a><a href="#">Shipping &amp; FAQ</a></div>
+        <a href="account-v2.html">My account</a><a href="cart-v2.html">Cart</a><a href="#">Bulk order</a><a href="#">Shipping &amp; FAQ</a></div>
     </div>
     <p class="disclaimer">All products are sold strictly for laboratory and research purposes only and are not intended for human or veterinary use, diagnosis, treatment, or consumption. Statements have not been evaluated by any regulatory authority.</p>
     <div class="foot-bottom"><p>&copy; 2026 Olympus Peptide. All rights reserved.</p><p>Privacy · Terms · Shipping</p></div>
