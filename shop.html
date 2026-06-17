@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shop all peptides — Olympus Peptide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0a0f2c; --blue: #1d2f91; --blue-2: #2a3da5; --blue-soft: #6f7fd6;
+    --paper: #ffffff; --mist: #f3f5fb; --mist-2: #eef1fa;
+    --line: rgba(10, 15, 44, 0.10); --muted: #5b6178;
+    --display: "Fraunces", Georgia, serif; --sans: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+    --maxw: 1200px; --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --net-blue: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg stroke='%231d2f91' stroke-width='0.8' fill='none'%3E%3Cpath d='M0 0 L32 32 L64 0 M32 32 L32 64'/%3E%3C/g%3E%3Cg fill='%231d2f91'%3E%3Ccircle cx='32' cy='32' r='2.1'/%3E%3Ccircle cx='0' cy='0' r='1.6'/%3E%3Ccircle cx='64' cy='0' r='1.6'/%3E%3Ccircle cx='0' cy='64' r='1.6'/%3E%3Ccircle cx='64' cy='64' r='1.6'/%3E%3Ccircle cx='32' cy='64' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.5; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+  .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+  .topbar { height: 42px; overflow: hidden; background: var(--ink); color: #fff; transition: height .5s var(--ease), opacity .4s var(--ease); }
+  .topbar .wrap { height: 42px; display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 12.5px; letter-spacing: .06em; font-weight: 500; }
+  .topbar .ts { opacity: .82; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .topbar .ts svg { width: 14px; height: 14px; stroke: var(--blue-soft); fill: none; stroke-width: 1.8; }
+  .topbar .sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,.35); }
+  .site-header.scrolled .topbar { height: 0; opacity: 0; }
+  nav { height: 80px; display: flex; align-items: center; background: rgba(255,255,255,0.66);
+    backdrop-filter: saturate(180%) blur(22px); -webkit-backdrop-filter: saturate(180%) blur(22px);
+    border-bottom: 1px solid transparent; transition: border-color .4s var(--ease), background .4s var(--ease), height .4s var(--ease); }
+  .site-header.scrolled nav { height: 64px; border-bottom-color: var(--line); background: rgba(255,255,255,0.85); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; }
+  .brand { font-weight: 700; font-size: 23px; letter-spacing: .18em; color: var(--ink); display: flex; align-items: center; gap: 12px; }
+  .brand .mark { width: 27px; height: 27px; border-radius: 50%; background: conic-gradient(from 220deg, var(--blue), var(--blue-soft), var(--blue)); box-shadow: inset 0 0 0 4px #fff, 0 3px 12px rgba(29,47,145,.45); }
+  .navlinks { display: flex; gap: 40px; }
+  .navlinks a { font-size: 15px; font-weight: 500; color: var(--ink); opacity: .80; position: relative; transition: opacity .25s; }
+  .navlinks a::after { content: ""; position: absolute; left: 0; bottom: -7px; height: 1.5px; width: 0; background: var(--blue); transition: width .3s var(--ease); }
+  .navlinks a:hover, .navlinks a.active { opacity: 1; } .navlinks a:hover::after, .navlinks a.active::after { width: 100%; }
+  .navicons { display: flex; gap: 22px; align-items: center; }
+  .navicons svg { width: 19px; height: 19px; stroke: var(--ink); opacity: .80; cursor: pointer; transition: opacity .25s; }
+  .nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: #fff !important; font-size: 14px; font-weight: 600; padding: 11px 24px; border-radius: 100px; margin-left: 6px; box-shadow: 0 6px 18px rgba(29,47,145,.28); transition: background .25s, transform .25s var(--ease), box-shadow .25s; }
+  .nav-cta:hover { background: var(--blue-2); transform: translateY(-1px); box-shadow: 0 10px 26px rgba(29,47,145,.38); }
+  .menu-toggle { display: none; }
+
+  .shop-head { position: relative; padding: 168px 0 40px; text-align: center; overflow: hidden; background: var(--mist); }
+  .shop-head::before { content: ""; position: absolute; inset: 0; background-image: var(--net-blue); opacity: .06; }
+  .shop-head .wrap { position: relative; z-index: 1; }
+  .shop-head .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11.5px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--blue); margin-bottom: 18px; padding: 9px 18px; border-radius: 100px; border: 1px solid rgba(29,47,145,.18); background: rgba(29,47,145,.05); }
+  .shop-head .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px rgba(29,47,145,.14); }
+  .shop-head h1 { font-family: var(--display); font-weight: 300; font-size: clamp(38px, 6vw, 72px); line-height: 1.02; letter-spacing: -.02em; }
+  .shop-head h1 em { font-style: italic; color: var(--blue); }
+  .shop-head p { font-size: 17px; color: var(--muted); margin-top: 16px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  .toolbar { position: sticky; top: 64px; z-index: 50; background: rgba(255,255,255,.86); backdrop-filter: saturate(180%) blur(16px); -webkit-backdrop-filter: saturate(180%) blur(16px); border-bottom: 1px solid var(--line); }
+  .toolbar .wrap { display: flex; align-items: center; gap: 18px; padding-top: 16px; padding-bottom: 16px; flex-wrap: wrap; }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; flex: 1; }
+  .chip { font-family: var(--sans); font-size: 13.5px; font-weight: 600; color: var(--ink); background: var(--mist); border: 1px solid var(--line); padding: 9px 16px; border-radius: 100px; cursor: pointer; transition: all .2s var(--ease); display: inline-flex; align-items: center; gap: 7px; }
+  .chip span { font-size: 11px; font-weight: 600; color: var(--muted); background: #fff; border-radius: 100px; padding: 1px 7px; transition: all .2s; }
+  .chip:hover { border-color: var(--blue-soft); }
+  .chip.is-active { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .chip.is-active span { background: rgba(255,255,255,.22); color: #fff; }
+  .search { position: relative; }
+  .search input { width: 240px; max-width: 50vw; font-family: var(--sans); font-size: 14px; padding: 11px 16px 11px 40px; border-radius: 100px; border: 1px solid var(--line); background: #fff; outline: none; transition: border-color .2s, box-shadow .2s; }
+  .search input:focus { border-color: var(--blue-soft); box-shadow: 0 0 0 4px rgba(29,47,145,.08); }
+  .search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; stroke: var(--muted); fill: none; stroke-width: 1.8; }
+
+  .shop-body { padding: 40px 0 110px; }
+  .count { font-size: 13.5px; color: var(--muted); margin-bottom: 22px; }
+  .count b { color: var(--ink); font-weight: 600; }
+  .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .prod-card { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s; }
+  .prod-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 3; background: linear-gradient(90deg, var(--blue), var(--blue-soft)); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease); }
+  .prod-card:hover::before { transform: scaleX(1); }
+  .prod-card:hover { transform: translateY(-6px); box-shadow: 0 22px 46px rgba(10,15,44,.12); border-color: transparent; }
+  .prod-media { position: relative; background: #fff; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .prod-media img { max-height: 100%; max-width: 76%; object-fit: contain; transition: transform .55s var(--ease); }
+  .prod-card:hover .prod-media img { transform: scale(1.06); }
+  .prod-badge { position: absolute; top: 13px; left: 13px; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: var(--blue); padding: 6px 11px; border-radius: 100px; }
+  .prod-info { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; background: var(--mist-2); border-top: 1px solid var(--line); }
+  .prod-cat { font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .prod-name { font-family: var(--display); font-weight: 400; font-size: 21px; margin-top: 5px; line-height: 1.1; }
+  .prod-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 18px; }
+  .prod-price { font-size: 17px; font-weight: 600; color: var(--ink); }
+  .prod-add { width: 38px; height: 38px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; transition: background .25s, transform .25s; }
+  .prod-add:hover { background: var(--blue-2); transform: scale(1.1); }
+  .prod-add svg { width: 16px; height: 16px; stroke: #fff; stroke-width: 2.2; fill: none; }
+  .empty { text-align: center; padding: 80px 0; color: var(--muted); font-size: 16px; display: none; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  footer { background: #fff; padding: 70px 0 40px; border-top: 1px solid var(--line); }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+  .foot-brand .brand { color: var(--ink); margin-bottom: 16px; }
+  .foot-brand p { font-size: 14px; color: var(--muted); max-width: 280px; line-height: 1.6; }
+  .foot-col h4 { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 18px; }
+  .foot-col a { display: block; font-size: 14px; color: var(--muted); margin-bottom: 12px; transition: color .25s; }
+  .foot-col a:hover { color: var(--blue); }
+  .disclaimer { font-size: 11.5px; color: var(--muted); margin-top: 22px; line-height: 1.6; max-width: 760px; }
+  .foot-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); flex-wrap: wrap; gap: 14px; }
+  .foot-bottom p { font-size: 12.5px; color: var(--muted); }
+
+  @media (max-width: 1080px) { .prod-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 880px) {
+    .navlinks, .navicons .desk { display: none; } .menu-toggle { display: block; }
+    nav { height: 66px; } .brand { font-size: 20px; } .topbar .ts.opt { display: none; }
+    .nav-cta { padding: 9px 18px; font-size: 13px; }
+    .toolbar { top: 66px; } .prod-grid { grid-template-columns: repeat(2, 1fr); }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 34px; }
+    .search input { width: 180px; }
+  }
+  @media (max-width: 480px) { .prod-grid { grid-template-columns: 1fr; } .foot-grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="topbar">
+    <div class="wrap">
+      <span class="ts"><svg viewBox="0 0 24 24"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>Cold-chain shipping on orders over $150</span>
+      <span class="sep"></span>
+      <span class="ts opt"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Third-party tested</span>
+      <span class="sep opt"></span>
+      <span class="ts opt"><svg viewBox="0 0 24 24"><path d="M9 3h6v3l-2 2v4l3 7H8l3-7V8L9 6z"/></svg>COA with every batch</span>
+    </div>
+  </div>
+  <nav id="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html"><span class="mark"></span>OLYMPUS</a>
+      <div class="navlinks">
+        <a href="shop.html" class="active">Shop</a>
+        <a href="index.html#categories">Categories</a>
+        <a href="index.html#standard">The Standard</a>
+        <a href="index.html#science">Science</a>
+      </div>
+      <div class="navicons">
+        <svg class="desk" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <svg class="desk" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3.5-6 7-6s7 2 7 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M6 7h13l-1.5 10.5a2 2 0 0 1-2 1.7H9.5a2 2 0 0 1-2-1.7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <a class="nav-cta" href="shop.html">Shop peptides</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="shop-head">
+  <div class="wrap">
+    <div class="eyebrow">Research-grade · Third-party tested</div>
+    <h1>The full <em>catalog.</em></h1>
+    <p>Every Olympus compound — independently verified, documented, and shipped cold-chain.</p>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="wrap">
+    <div class="chips" id="chips">
+      <button class="chip is-active" data-filter="all">All <span>31</span></button>
+      <button class="chip" data-filter="Weight loss">Weight loss <span>6</span></button>
+      <button class="chip" data-filter="Healing &amp; recovery">Healing &amp; recovery <span>5</span></button>
+      <button class="chip" data-filter="Muscle growth">Muscle growth <span>4</span></button>
+      <button class="chip" data-filter="Longevity">Longevity <span>7</span></button>
+      <button class="chip" data-filter="Skin &amp; hair">Skin &amp; hair <span>3</span></button>
+      <button class="chip" data-filter="Sexual health">Sexual health <span>3</span></button>
+      <button class="chip" data-filter="Blends &amp; stacks">Blends &amp; stacks <span>2</span></button>
+      <button class="chip" data-filter="Supplies">Supplies <span>1</span></button>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="search" placeholder="Search peptides…" aria-label="Search products" />
+    </div>
+  </div>
+</div>
+
+<section class="shop-body">
+  <div class="wrap">
+    <div class="count" id="count"></div>
+    <div class="prod-grid" id="grid">
+      <a class="prod-card reveal" data-cat="Weight loss" data-name="5-amino-1mq" href="https://olympuspeptide.ca/peptides/5-amino-1mq/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/06/bottle5amino_generic.jpg" alt="5-AMINO-1MQ" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Weight loss</div><div class="prod-name">5-AMINO-1MQ</div>
+          <div class="prod-foot"><div class="prod-price">$79.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Weight loss" data-name="aod-9604" href="https://olympuspeptide.ca/peptides/aod-9604/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/02/bottle_aod_generic.jpg" alt="AOD-9604" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Weight loss</div><div class="prod-name">AOD-9604</div>
+          <div class="prod-foot"><div class="prod-price">$69.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Supplies" data-name="bacteriostatic water" href="https://olympuspeptide.ca/peptides/bacteriostatic-water/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/02/bacteriostatic-_water_10ml.jpg" alt="Bacteriostatic Water" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Supplies</div><div class="prod-name">Bacteriostatic Water</div>
+          <div class="prod-foot"><div class="prod-price">$10.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Healing &amp; recovery" data-name="bpc-157" href="https://olympuspeptide.ca/peptides/bpc-157/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_bpc157.jpg" alt="BPC-157" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Healing &amp; recovery</div><div class="prod-name">BPC-157</div>
+          <div class="prod-foot"><div class="prod-price">$59.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Muscle growth" data-name="cjc-1295 (no dac)" href="https://olympuspeptide.ca/peptides/cjc-1295-no-dac/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_cjc1295_generic.jpg" alt="CJC-1295 (No Dac)" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Muscle growth</div><div class="prod-name">CJC-1295 (No Dac)</div>
+          <div class="prod-foot"><div class="prod-price">$69.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Longevity" data-name="dsip" href="https://olympuspeptide.ca/peptides/dsip/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/02/bottle_dsip_generic.jpg" alt="DSIP" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Longevity</div><div class="prod-name">DSIP</div>
+          <div class="prod-foot"><div class="prod-price">$55.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Longevity" data-name="epithalon" href="https://olympuspeptide.ca/peptides/epithalon/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_epithalon.jpg" alt="Epithalon" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Longevity</div><div class="prod-name">Epithalon</div>
+          <div class="prod-foot"><div class="prod-price">$69.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Skin &amp; hair" data-name="ghk-cu" href="https://olympuspeptide.ca/peptides/ghk-cu/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/02/bottle_ghk.jpg" alt="GHK-CU" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Skin &amp; hair</div><div class="prod-name">GHK-CU</div>
+          <div class="prod-foot"><div class="prod-price">$69.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Skin &amp; hair" data-name="glow" href="https://olympuspeptide.ca/peptides/skin-hair/glow/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/03/bottle_glow_generic.jpg" alt="GLOW" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Skin &amp; hair</div><div class="prod-name">GLOW</div>
+          <div class="prod-foot"><div class="prod-price">$169.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Muscle growth" data-name="igf1-lr3" href="https://olympuspeptide.ca/peptides/igf1-lr3/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/02/bottle_igf1.jpg" alt="IGF1-LR3" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Muscle growth</div><div class="prod-name">IGF1-LR3</div>
+          <div class="prod-foot"><div class="prod-price">$99.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Healing &amp; recovery" data-name="ipamorelin" href="https://olympuspeptide.ca/peptides/ipamorelin/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/02/bottle_ipamorelin.jpg" alt="Ipamorelin" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Healing &amp; recovery</div><div class="prod-name">Ipamorelin</div>
+          <div class="prod-foot"><div class="prod-price">$59.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Sexual health" data-name="kisspeptin" href="https://olympuspeptide.ca/peptides/kisspeptin/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/02/bottle_kisspetin.jpg" alt="Kisspeptin" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Sexual health</div><div class="prod-name">Kisspeptin</div>
+          <div class="prod-foot"><div class="prod-price">$69.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Blends &amp; stacks" data-name="klow" href="https://olympuspeptide.ca/peptides/klow/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/03/bottle_klow_generic.jpg" alt="KLOW" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Blends &amp; stacks</div><div class="prod-name">KLOW</div>
+          <div class="prod-foot"><div class="prod-price">$189.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Healing &amp; recovery" data-name="kpv" href="https://olympuspeptide.ca/peptides/kpv/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_kpv_generic.jpg" alt="KPV" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Healing &amp; recovery</div><div class="prod-name">KPV</div>
+          <div class="prod-foot"><div class="prod-price">$59.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Skin &amp; hair" data-name="melanotan 1" href="https://olympuspeptide.ca/peptides/melanotan-1/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_melanotan1.jpg" alt="Melanotan 1" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Skin &amp; hair</div><div class="prod-name">Melanotan 1</div>
+          <div class="prod-foot"><div class="prod-price">$59.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Sexual health" data-name="melanotan 2" href="https://olympuspeptide.ca/peptides/melanotan-2/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/04/bottle_melanotan2.jpg" alt="Melanotan 2" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Sexual health</div><div class="prod-name">Melanotan 2</div>
+          <div class="prod-foot"><div class="prod-price">$69.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Longevity" data-name="mots-c" href="https://olympuspeptide.ca/peptides/mots-c/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_motsc.jpg" alt="MOTS-C" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Longevity</div><div class="prod-name">MOTS-C</div>
+          <div class="prod-foot"><div class="prod-price">$89.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Weight loss" data-name="orforglipron oral glp-1" href="https://olympuspeptide.ca/peptides/orforglipron-oral-glp-1/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/03/bottle_oral_glp1.jpg" alt="Orforglipron Oral GLP-1" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Weight loss</div><div class="prod-name">Orforglipron Oral GLP-1</div>
+          <div class="prod-foot"><div class="prod-price">$129.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Sexual health" data-name="pt-141" href="https://olympuspeptide.ca/peptides/pt-141/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_pt141.jpg" alt="PT-141" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Sexual health</div><div class="prod-name">PT-141</div>
+          <div class="prod-foot"><div class="prod-price">$89.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Muscle growth" data-name="pulse (cjc + ipa)" href="https://olympuspeptide.ca/peptides/pulse-cjc-ipamorelin/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/03/bottle_ulse_generic.jpg" alt="Pulse (CJC + IPA)" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Muscle growth</div><div class="prod-name">Pulse (CJC + IPA)</div>
+          <div class="prod-foot"><div class="prod-price">$89.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Weight loss" data-name="retatrutide" href="https://olympuspeptide.ca/peptides/retatrutide/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/02/bottle_reta_generic.jpg" alt="Retatrutide" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Weight loss</div><div class="prod-name">Retatrutide</div>
+          <div class="prod-foot"><div class="prod-price">$89.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Longevity" data-name="selank" href="https://olympuspeptide.ca/peptides/selank/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_selank.jpg" alt="Selank" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Longevity</div><div class="prod-name">Selank</div>
+          <div class="prod-foot"><div class="prod-price">$59.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Weight loss" data-name="semaglutide" href="https://olympuspeptide.ca/peptides/semaglutide/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_semaglutide.jpg" alt="Semaglutide" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Weight loss</div><div class="prod-name">Semaglutide</div>
+          <div class="prod-foot"><div class="prod-price">$89.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Longevity" data-name="semax" href="https://olympuspeptide.ca/peptides/semax/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/04/bottle_semax.jpg" alt="Semax" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Longevity</div><div class="prod-name">Semax</div>
+          <div class="prod-foot"><div class="prod-price">$59.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Longevity" data-name="snap-8" href="https://olympuspeptide.ca/peptides/snap-8/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/03/bottle_snap8.jpg" alt="SNAP-8" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Longevity</div><div class="prod-name">SNAP-8</div>
+          <div class="prod-foot"><div class="prod-price">$69.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Longevity" data-name="ss-31" href="https://olympuspeptide.ca/peptides/ss-31/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/03/bottle_ss31.jpg" alt="SS-31" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Longevity</div><div class="prod-name">SS-31</div>
+          <div class="prod-foot"><div class="prod-price">$79.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Healing &amp; recovery" data-name="tb4 (tb-500)" href="https://olympuspeptide.ca/peptides/tb4-tb-500/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_tb500.jpg" alt="TB4 (TB-500)" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Healing &amp; recovery</div><div class="prod-name">TB4 (TB-500)</div>
+          <div class="prod-foot"><div class="prod-price">$69.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Muscle growth" data-name="tesamorelin" href="https://olympuspeptide.ca/peptides/tesamorelin/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_tesa.jpg" alt="Tesamorelin" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Muscle growth</div><div class="prod-name">Tesamorelin</div>
+          <div class="prod-foot"><div class="prod-price">$109.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Healing &amp; recovery" data-name="thymosin alpha 1" href="https://olympuspeptide.ca/peptides/thymosin-alpha-1/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/02/bottle_thymosin.jpg" alt="Thymosin Alpha 1" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Healing &amp; recovery</div><div class="prod-name">Thymosin Alpha 1</div>
+          <div class="prod-foot"><div class="prod-price">$119.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Weight loss" data-name="tirzepatide" href="https://olympuspeptide.ca/peptides/tirzepatide/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2025/06/bottle_tirsepatide.jpg" alt="Tirzepatide" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Weight loss</div><div class="prod-name">Tirzepatide</div>
+          <div class="prod-foot"><div class="prod-price">$79.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+      <a class="prod-card reveal" data-cat="Blends &amp; stacks" data-name="wolverine stack" href="https://olympuspeptide.ca/peptides/wolverine-stack/">
+        <div class="prod-media"><img src="https://olympuspeptide.ca/wp-content/uploads/2026/05/bottle_wolverine_generic.jpg" alt="WOLVERINE Stack" loading="lazy"/></div>
+        <div class="prod-info"><div class="prod-cat">Blends &amp; stacks</div><div class="prod-name">WOLVERINE Stack</div>
+          <div class="prod-foot"><div class="prod-price">$89.00</div><div class="prod-add"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></div></div>
+      </a>
+    </div>
+    <div class="empty" id="empty">No products match your search.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><span class="mark"></span>OLYMPUS</a>
+        <p>Research-grade peptides, purified and verified to a higher standard. Olympus Peptide.</p>
+      </div>
+      <div class="foot-col"><h4>Shop</h4>
+        <a href="shop.html">All peptides</a><a href="shop.html">Weight loss</a><a href="shop.html">Healing &amp; recovery</a><a href="shop.html">Longevity</a><a href="shop.html">Skin &amp; hair</a></div>
+      <div class="foot-col"><h4>Company</h4>
+        <a href="index.html#standard">The Standard</a><a href="index.html#science">Science</a><a href="#">Certificates</a><a href="#">Contact</a></div>
+      <div class="foot-col"><h4>Support</h4>
+        <a href="#">Account</a><a href="#">Bulk order</a><a href="#">Shipping</a><a href="#">FAQ</a></div>
+    </div>
+    <p class="disclaimer">All products are sold strictly for laboratory and research purposes only and are not intended for human or veterinary use, diagnosis, treatment, or consumption. Statements have not been evaluated by any regulatory authority.</p>
+    <div class="foot-bottom"><p>&copy; 2026 Olympus Peptide. All rights reserved.</p><p>Privacy · Terms · Shipping</p></div>
+  </div>
+</footer>
+
+<script>
+  var siteHeader = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 12) siteHeader.classList.add('scrolled'); else siteHeader.classList.remove('scrolled');
+  }, { passive: true });
+
+  var grid = document.getElementById('grid');
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.prod-card'));
+  var chips = document.getElementById('chips');
+  var search = document.getElementById('search');
+  var countEl = document.getElementById('count');
+  var emptyEl = document.getElementById('empty');
+  var activeCat = 'all';
+
+  function apply() {
+    var q = search.value.trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function (c) {
+      var okCat = activeCat === 'all' || c.getAttribute('data-cat') === activeCat;
+      var okQ = !q || c.getAttribute('data-name').indexOf(q) !== -1;
+      var show = okCat && okQ;
+      c.style.display = show ? '' : 'none';
+      if (show) shown++;
+    });
+    countEl.innerHTML = '<b>' + shown + '</b> product' + (shown === 1 ? '' : 's') + (activeCat === 'all' ? '' : ' in ' + activeCat) + (q ? ' matching “' + q + '”' : '');
+    emptyEl.style.display = shown ? 'none' : 'block';
+  }
+
+  chips.addEventListener('click', function (e) {
+    var b = e.target.closest('.chip'); if (!b) return;
+    chips.querySelectorAll('.chip').forEach(function (x) { x.classList.remove('is-active'); });
+    b.classList.add('is-active');
+    activeCat = b.getAttribute('data-filter');
+    apply();
+  });
+  search.addEventListener('input', apply);
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  cards.forEach(function (el, i) { el.style.transitionDelay = (i % 4 * 0.05) + 's'; io.observe(el); });
+
+  apply();
+</script>
+</body>
+</html>
